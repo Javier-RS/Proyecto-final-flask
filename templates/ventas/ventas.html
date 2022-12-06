@@ -1,0 +1,50 @@
+{% extends './layout.html' %}
+
+{% block title%} Ventas {%endblock%}
+
+{%block body%}
+<body>
+    
+      <main class="h-screen w-full flex flex-col justify-center items-center bg-[#1A2238]">
+    <div class="container m-0 vh-100 row justify-content-center align-items-center ">
+        <div class="col-md-4 mt-20">        
+        <h1 class="text-white"> Administracion de Ventas <h1>
+
+            <form id="ventaForm" class="card card-body text-black">
+            
+            <label for ="referencia">referencia</label>
+                <input
+                type="text"
+                name="referencia"
+                placeholder="ingrese la referencia"
+                class="form-control mb-2"
+                required/>
+                
+            <label for ="cantidad">cantidad</label>
+                <input
+                type="text"
+                name="cantidad"
+                placeholder="ingrese una cantidad"
+                class="form-control mb-2"
+                required/>   
+             
+                
+                <button class="btn btn-primary" >Guardar </button>
+              
+
+  
+            </form>
+
+<!-- component -->
+
+<ul id="ventaList" class="list-group"></ul>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="{{ url_for('static', filename='js/ventas/verventas.js') }}"></script>
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+  
+</body>
+{%endblock%}

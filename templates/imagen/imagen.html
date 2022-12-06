@@ -1,0 +1,46 @@
+{% extends './layout.html' %}
+
+{% block title%}home {%endblock%}
+
+{%block body%}
+<h1> hola</h1>
+<h1> hola</h1>
+<h1> hola</h1>
+<h1> hola</h1>
+<h1> hola</h1>
+<h1> hola</h1>
+<h1> hola</h1>
+<p>Foto:<input type="file" id="foto" required></p>
+<p><button type="button" id="boton1" class="text-white ml-9 underline">Subir foto</button></p>
+<p><img id="imagen"></p>
+<script>
+    document.getElementById("boton1").addEventListener("click", () => agregar());
+
+
+    function agregar() {
+        let fd = new FormData();
+        fd.append('inputFile', document.getElementById("foto").files[0]);
+        console.log(fd)
+        console.log(document.getElementById("foto").files[0])
+        fetch('/uploadPerfil', {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'multipart/form-data',
+                'token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzAyMjQ4MTQsImlhdCI6MTY3MDEzODQxNCwic3ViIjoxfQ.wsAFGxO8Orv_U4moUE1eDeWuJwtN9PgjLyYuds2RBTY'
+            },
+            body: fd
+        })
+            .then(response => response.json())
+            .then(datos => {
+                if (datos.resultado == "Ok")
+                    document.getElementById("imagen").setAttribute("src", document.getElementById("foto").files[0].name);
+            })
+    }
+</script>
+
+<!--<script src="{{ url_for('static', filename='js/imagen.js') }}"></script>
+-->
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+  
+  
+{%endblock%}

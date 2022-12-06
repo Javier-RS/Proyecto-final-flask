@@ -1,0 +1,48 @@
+{% extends './layout.html' %}
+
+{% block title%} Registro {%endblock%}
+
+{%block body%}
+<body>
+    
+      <main class="h-screen w-full flex flex-col justify-center items-center bg-[#1A2238]">
+    <div class="container m-0 vh-100 row justify-content-center align-items-center ">
+        <div class="col-md-4 mt-20">        
+        <h1 class="text-white"> Administracion de usuarios <h1>
+
+            <form id="userForm" class="card card-body text-black">
+            
+            <label for ="Correo">Correo</label>
+                <input
+                type="email"
+                name="email"
+                placeholder="ingrese un correo"
+                class="form-control mb-2"
+                required/>
+                
+            <label for ="Contraseña">Contraseña</label>
+                <input
+                type="password"
+                name="password"
+                placeholder="ingrese una contraseña"
+                class="form-control mb-2"
+                required/>   
+                
+                <button class="btn btn-primary" >save </button>
+              
+<a href="{{url_for('.descargarPdf')}}" class="text-red-500">Generar PDF</a> 
+
+  
+            </form>
+
+<!-- component -->
+
+  <ul id="userList" class="list-group"></ul>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="{{ url_for('static', filename='js/verusuarios.js') }}"></script>
+</body>
+{%endblock%}
